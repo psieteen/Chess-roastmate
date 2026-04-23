@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a2a3a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 30px;
+    background: #2d3e3f;
+    padding: 25px;
+    border-radius: 24px;
+    align-items: flex-start;
+}
+
+.board-container {
+    background: #2c1e12;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+#chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    width: 480px;
+    height: 480px;
+    border: 2px solid #d4af37;
+}
+
+.square {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.square.light {
+    background-color: #f0d9b5;
+}
+
+.square.dark {
+    background-color: #b58863;
+}
+
+.square.selected {
+    background-color: #7b945b;
+    outline: 2px solid gold;
+}
+
+.square.valid-move {
+    position: relative;
+}
+
+.square.valid-move::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: #4a6b2a;
+    border-radius: 50%;
+}
+
+.chat-panel {
+    width: 300px;
+    background: #fef9e8;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    max-height: 540px;
+}
+
+.personality-avatar {
+    background: #4a6a6b;
+    color: white;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #d4af37;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff8f0;
+    min-height: 300px;
+    max-height: 400px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.message.system {
+    background: #cfe2ff;
+    border-left: 3px solid #0d6efd;
+}
+
+.roast {
+    background: #ffe0e0;
+    border-left: 3px solid #dc3545;
+}
+
+.lesson {
+    background: #d1e7dd;
+    border-left: 3px solid #198754;
+}
+
+.lesson-tip {
+    background: #e2e3e5;
+    padding: 12px;
+    font-size: 0.75rem;
+    text-align: center;
+    border-top: 1px solid #d4af37;
+}
+
+#chessboard svg {
+    width: 45px;
+    height: 45px;
+}
+
+@media (max-width: 850px) {
+    .container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    #chessboard {
+        grid-template-columns: repeat(8, 45px);
+        grid-template-rows: repeat(8, 45px);
+        width: 360px;
+        height: 360px;
+    }
+    
+    .square {
+        width: 45px;
+        height: 45px;
+        font-size: 28px;
+    }
+    
+    #chessboard svg {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .chat-panel {
+        width: 360px;
+    }
+}
+
+/* AI response style */
+.message.ai-response {
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+    border-left: 4px solid #00acc1;
+    color: #006064;
+}
