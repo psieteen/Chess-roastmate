@@ -3,7 +3,6 @@ let selectedRow = null;
 let selectedCol = null;
 let coachName = localStorage.getItem('coachName') || 'Pawn';
 
-// Update avatar display
 function updateAvatar() {
     const avatar = document.getElementById('coach-avatar');
     if (avatar) {
@@ -11,7 +10,6 @@ function updateAvatar() {
     }
 }
 
-// Rename coach
 document.getElementById('rename-btn').addEventListener('click', () => {
     const newName = prompt('Enter new coach name:', coachName);
     if (newName && newName.trim()) {
@@ -112,7 +110,6 @@ async function getAIResponse(moveDesc) {
         
         const data = await response.json();
         
-        // Remove thinking message
         const chatDiv = document.getElementById('chat-messages');
         const lastMsg = chatDiv.lastChild;
         if (lastMsg && lastMsg.innerText.includes('Thinking...')) {
@@ -126,7 +123,7 @@ async function getAIResponse(moveDesc) {
         if (lastMsg && lastMsg.innerText.includes('Thinking...')) {
             chatDiv.removeChild(lastMsg);
         }
-        addChatMessage("⚠️", "Backend not running. Start with: cd backend && python app.py", "system");
+        addChatMessage("⚠️", "Backend not running. Start with: cd .. && python app.py", "system");
     }
 }
 
@@ -164,7 +161,6 @@ function addChatMessage(speaker, text, type) {
     chatDiv.scrollTop = chatDiv.scrollHeight;
 }
 
-// Initialize
 updateAvatar();
 renderBoard();
 addChatMessage(coachName, "Hello! I'm your chess coach. Make a move and I'll teach you!", "lesson");
